@@ -3,14 +3,19 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/header'
-import { textHero } from './data'
+import { textHero, differences } from './data'
 import TextToHero from './components/TextToHero'
 import Button from './components/button/Button'
 
 export default function App() {
+	const [content, setContent] = useState('Нажми на кнопку');
 
+	function handleClick(type) {
+		setContent = (type)
+	}
 	return (
 		<div>
+
 			<Header />
 			<main>
 				<h1>Hello React</h1>
@@ -23,10 +28,11 @@ export default function App() {
 					</ul>
 				</section>
 				<section className='product'>
-					<Button>Help</Button>
-					<Button>Resurces</Button>
-					<Button>About</Button>
+					<Button onClick={() => handleClick('ways')}>Help</Button>
+					<Button onClick={() => handleClick('easy')}>Resurces</Button>
+					<Button onClick={() => handleClick('program')}>About</Button>
 				</section>
+				<p>{differences[content]}</p>
 			</main>
 		</div>
 	)
