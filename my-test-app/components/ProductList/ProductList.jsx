@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './ProductList.css'
 
-const API_URL = 'http://api.valantis.store:40000';
+const API_URL = 'http://api.valantis.store:40000'
 
 const ProductList = () => {
-	const [products, setProducts] = useState([]);
-	const [currentPage, setCurrentPage] = useState(1);
-	const [totalPages, setTotalPages] = useState(1);
+	const [products, setProducts] = useState([])
+	const [currentPage, setCurrentPage] = useState(1)
+	const [totalPages, setTotalPages] = useState(1)
 
 	const fetchData = async (page = 1) => {
 		try {
 			const response = await axios.get(`${API_URL}products`, {
 				params: { page },
-				headers: { Authorization: 'Valantis' },
-			});
+				headers: { Authorization: 'Valantis' }
+			})
 
-			setProducts(response.data.products);
-			setTotalPages(response.data.totalPages);
+			setProducts(response.data.products)
+			setTotalPages(response.data.totalPages)
 		} catch (error) {
-			console.error('Ошибка поиска данных:', error.message);
+			console.error('Ошибка поиска данных:', error.message)
 		}
-	};
+	}
 
 	useEffect(() => {
-		fetchData(currentPage);
-	}, [currentPage]);
+		fetchData(currentPage)
+	}, [currentPage])
 
 	const handlePageChange = (page) => {
-		setCurrentPage(page);
-	};
+		setCurrentPage(page)
+	}
 
 	return (
 		<div className='products'>
@@ -63,7 +63,7 @@ const ProductList = () => {
 				))}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default ProductList;
+export default ProductList
