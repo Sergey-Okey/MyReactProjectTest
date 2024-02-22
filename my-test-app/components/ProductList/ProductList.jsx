@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-
+import './ProductList.css'
 
 const API_URL = 'http://api.valantis.store:40000';
 
@@ -20,7 +19,7 @@ const ProductList = () => {
 			setProducts(response.data.products);
 			setTotalPages(response.data.totalPages);
 		} catch (error) {
-			console.error('Error fetching data:', error.message);
+			console.error('Ошибка поиска данных:', error.message);
 		}
 	};
 
@@ -33,15 +32,15 @@ const ProductList = () => {
 	};
 
 	return (
-		<div>
-			<h1>Product List</h1>
+		<div className='products'>
+			<h1>Список продуктов</h1>
 			<table>
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Brand</th>
+						<th>Имя</th>
+						<th>Цена</th>
+						<th>Бренд</th>
 					</tr>
 				</thead>
 				<tbody>
